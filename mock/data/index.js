@@ -33,6 +33,7 @@ class Data {
 
   search({ placeId, date, clubId, courtId }) {
     let clubs = this.availability[placeId] || [];
+
     if (clubId) {
       clubs = clubs.filter((club) => club.id === clubId);
     }

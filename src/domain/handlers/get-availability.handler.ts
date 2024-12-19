@@ -1,5 +1,7 @@
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Inject } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+import { Cache } from 'cache-manager';
 
 import {
   ClubWithAvailability,
@@ -15,32 +17,45 @@ export class GetAvailabilityHandler
   implements IQueryHandler<GetAvailabilityQuery>
 {
   constructor(
+    // @ts-ignore
     @Inject(ALQUILA_TU_CANCHA_CLIENT)
     private alquilaTuCanchaClient: AlquilaTuCanchaClient,
+    // @ts-ignore
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
 
   async execute(query: GetAvailabilityQuery): Promise<ClubWithAvailability[]> {
-    const clubs_with_availability: ClubWithAvailability[] = [];
-    const clubs = await this.alquilaTuCanchaClient.getClubs(query.placeId);
-    for (const club of clubs) {
-      const courts = await this.alquilaTuCanchaClient.getCourts(club.id);
-      const courts_with_availability: ClubWithAvailability['courts'] = [];
-      for (const court of courts) {
-        const slots = await this.alquilaTuCanchaClient.getAvailableSlots(
-          club.id,
-          court.id,
-          query.date,
-        );
-        courts_with_availability.push({
-          ...court,
-          available: slots,
-        });
-      }
-      clubs_with_availability.push({
-        ...club,
-        courts: courts_with_availability,
-      });
+    const cacheKey = `availability-${query.placeId}-${query.date}`;
+    const cachedData: ClubWithAvailability[] | undefined =
+      await this.cacheManager.get(cacheKey);
+    if (cachedData) {
+      return cachedData;
     }
-    return clubs_with_availability;
+
+    const clubs = await this.alquilaTuCanchaClient.getClubs(query.placeId);
+    console.log('inicio');
+    const clubsWithAvailability: ClubWithAvailability[] = await Promise.all(
+      clubs.map(async (club) => {
+        const courts = await this.alquilaTuCanchaClient.getCourts(club.id);
+
+        const courtsWithAvailability = await Promise.all(
+          courts.map(async (court) => {
+            const slots = await this.alquilaTuCanchaClient.getAvailableSlots(
+              club.id,
+              court.id,
+              query.date,
+            );
+            return { ...court, available: slots };
+          }),
+        );
+
+        return { ...club, courts: courtsWithAvailability };
+      }),
+    );
+    console.log('fin');
+
+    // Almacenar en caché la respuesta con un TTL de 15 seg
+    await this.cacheManager.set(cacheKey, clubsWithAvailability, 15000);
+    return clubsWithAvailability;
   }
 }
