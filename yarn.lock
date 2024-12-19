@@ -1655,14 +1655,13 @@
     "base64-js" "^1.3.1"
     "ieee754" "^1.1.13"
 
-"cache-manager@*", "cache-manager@<=5", "cache-manager@5.5.3":
-  "integrity" "sha512-Td6F8lZE/YCciSi8xmdBjur6zlKIcoLMZp9jTmJNc44DrXIIcEhr9gra5j1T7RRbtWHaG5tJMEBKS+0S1+T2NQ=="
-  "resolved" "https://registry.npmjs.org/cache-manager/-/cache-manager-5.5.3.tgz"
-  "version" "5.5.3"
+"cache-manager@*", "cache-manager@<=5", "cache-manager@5.3.2":
+  "integrity" "sha512-MBpwYqCqf8LFSso5CjMs5Kj2i3RYYUP0fLwjMSnxyspYx0y8uT1SZbWiOk33fw5r+Sbpe5ERfk1+pgXEJ/omEw=="
+  "resolved" "https://registry.npmjs.org/cache-manager/-/cache-manager-5.3.2.tgz"
+  "version" "5.3.2"
   dependencies:
-    "eventemitter3" "^5.0.1"
     "lodash.clonedeep" "^4.5.0"
-    "lru-cache" "^10.2.2"
+    "lru-cache" "^10.1.0"
     "promise-coalesce" "^1.1.2"
 
 "call-bind@^1.0.0":
@@ -2233,11 +2232,6 @@
 "event-target-shim@^5.0.0":
   "integrity" "sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ=="
   "resolved" "https://registry.npmjs.org/event-target-shim/-/event-target-shim-5.0.1.tgz"
-  "version" "5.0.1"
-
-"eventemitter3@^5.0.1":
-  "integrity" "sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA=="
-  "resolved" "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.1.tgz"
   "version" "5.0.1"
 
 "events@^3.2.0":
@@ -3460,7 +3454,7 @@
     "chalk" "^4.1.0"
     "is-unicode-supported" "^0.1.0"
 
-"lru-cache@^10.2.2":
+"lru-cache@^10.1.0":
   "integrity" "sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ=="
   "resolved" "https://registry.npmjs.org/lru-cache/-/lru-cache-10.4.3.tgz"
   "version" "10.4.3"
@@ -4676,10 +4670,10 @@
   "resolved" "https://registry.npmjs.org/type-fest/-/type-fest-0.21.3.tgz"
   "version" "0.21.3"
 
-"typescript@*", "typescript@^4.3.5", "typescript@>=2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=4.3", "typescript@>3.6.0", "typescript@5.7.2":
-  "integrity" "sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg=="
-  "resolved" "https://registry.npmjs.org/typescript/-/typescript-5.7.2.tgz"
-  "version" "5.7.2"
+"typescript@*", "typescript@^4.3.5", "typescript@>=2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=4.3", "typescript@>3.6.0", "typescript@4.3.5":
+  "integrity" "sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA=="
+  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.3.5.tgz"
+  "version" "4.3.5"
 
 "typescript@4.7.4":
   "integrity" "sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ=="
